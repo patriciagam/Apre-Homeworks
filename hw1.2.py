@@ -72,5 +72,5 @@ plt.ylabel("Accuracy")
 plt.title("Training and Testing Accuracy vs. Minimum Samples Split")
 plt.legend()
 plt.grid(True)
-plt.savefig("./h1-plot.svg")  # Save the plot
+plt.savefig("./h1.2-plot.svg")  # Save the plot
 plt.show()
