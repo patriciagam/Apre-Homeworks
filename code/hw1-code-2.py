@@ -58,8 +58,6 @@ plt.plot(
 
 plt.xlabel("Minimum Samples Split")
 plt.ylabel("Accuracy")
-plt.title("Training and Testing Accuracy vs. Minimum Samples Split")
 plt.legend()
-plt.grid(True)
 
 plt.show()
