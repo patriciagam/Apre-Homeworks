@@ -1,28 +1,32 @@
-job = [col for col in X_normalized.columns if col.startswith("job_")]
-education = [col for col in X_normalized.columns if col.startswith("education_")]
+df = pd.read_csv("./data/accounts.csv")
 
-melted_jobs = pd.melt(X, id_vars = "cluster", value_vars = job, var_name = "job", value_name = "value")
-melted_jobs["job"] = melted_jobs["job"].str.replace("job_", "")
+X = df.iloc[:, :8]   
 
-melted_education  =  pd.melt(X, id_vars = "cluster", value_vars = education, var_name = "education", value_name = "value")
-melted_education["education"] = melted_education["education"].str.replace("education_", "")
+X.dropna(inplace = True)
+X.drop_duplicates(inplace = True)
+
+X["cluster"] = clusters
 
 sns.displot(
-    data = melted_jobs[melted_jobs["value"]], 
+    data = X, 
     y = "job",
     hue = "cluster",
     multiple = "dodge",
     stat = "density",
     shrink = 0.8,
     common_norm = False,
+    palette = "Set2"
 )
 
 sns.displot(
-    data = melted_education[melted_education["value"]],  
+    data = X,  
     y = "education",
     hue = "cluster",
     multiple="dodge",
     stat = "density",
     shrink = 0.8,
     common_norm = False,
+    palette = "Set2"
 )
+
+plt.show()
